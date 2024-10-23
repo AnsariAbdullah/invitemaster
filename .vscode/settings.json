@@ -26,6 +26,7 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "reactSnippets.settings.importReactOnTop": false,
   "prettier.singleQuote": true,
+  "prettier.jsxSingleQuote": true,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   }

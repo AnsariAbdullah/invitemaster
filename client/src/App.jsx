@@ -1,11 +1,20 @@
-import React from 'react';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { HomeLayout, Error, Landing, Register, Login } from './pages';
+import React from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  HomeLayout,
+  Error,
+  Landing,
+  Register,
+  Login,
+  Dashboard,
+  CreateInvite,
+  InviteTable,
+} from "./pages";
 
 const App = () => {
   const router = createBrowserRouter([
     {
-      path: '/',
+      path: "/",
       element: <HomeLayout />,
       errorElement: <Error />,
       children: [
@@ -14,12 +23,26 @@ const App = () => {
           element: <Landing />,
         },
         {
-          path: 'register',
+          path: "register",
           element: <Register />,
         },
         {
-          path: 'login',
+          path: "login",
           element: <Login />,
+        },
+        {
+          path: "dashboard",
+          element: <Dashboard />,
+          children: [
+            {
+              index: true,
+              element: <CreateInvite />,
+            },
+            {
+              path: "invite-table",
+              element: <InviteTable />,
+            },
+          ],
         },
       ],
     },
