@@ -1,10 +1,88 @@
+import main from '../assets/images/main.svg';
+import { Link } from 'react-router-dom';
+import logo from '../assets/images/logo.png';
+import styled from 'styled-components';
 const Landing = () => {
   return (
-    <div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora illo, a
-      architecto facere sapiente quia cum est, porro aspernatur distinctio ab ex
-      qui officia harum iusto blanditiis quasi repudiandae saepe.
-    </div>
+    <StyledWrapper>
+      <nav>
+        <img src={logo} alt='invite-master' className='logo' />
+      </nav>
+      <div className='container page'>
+        {/* info */}
+        <div className='info'>
+          <h1>
+            Invite <span>tracking</span> app
+          </h1>
+          <p>
+            Manage all your invitations in one organized place. Whether it’s a
+            wedding, birthday party, or special event, our app helps you track
+            guest lists, RSVPs, and important details effortlessly. See who’s
+            coming, send reminders, and keep everything updated in real time.
+            Spend less time managing invites and more time enjoying your event.
+          </p>
+          <Link to='/register' className='btn register-link'>
+            Register
+          </Link>
+          <Link to='/login' className='btn'>
+            Login / Demo User
+          </Link>
+        </div>
+        <img src={main} alt='job hunt' className='img main-img' />
+      </div>
+    </StyledWrapper>
   );
 };
+
+const StyledWrapper = styled.section`
+  nav {
+    width: var(--fluid-width);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    img {
+      width: 40px;
+    }
+  }
+  .page {
+    min-height: calc(100vh - var(--nav-height));
+    display: grid;
+    align-items: center;
+    margin-top: -3rem;
+  }
+  h1 {
+    font-weight: 700;
+    span {
+      color: var(--primary-500);
+    }
+    margin-bottom: 1.5rem;
+  }
+  p {
+    line-height: 2;
+    color: var(--text-secondary-color);
+    margin-bottom: 1.5rem;
+    max-width: 35em;
+  }
+  .register-link {
+    margin-right: 1rem;
+  }
+  .main-img {
+    display: none;
+  }
+  .btn {
+    padding: 0.75rem 1rem;
+  }
+  @media (min-width: 992px) {
+    .page {
+      grid-template-columns: 1fr 400px;
+      column-gap: 3rem;
+    }
+    .main-img {
+      display: block;
+    }
+  }
+`;
+
 export default Landing;
