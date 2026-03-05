@@ -1,6 +1,7 @@
 import { useState, useContext, createContext } from 'react';
 import { Outlet } from 'react-router-dom';
-import { NavBar } from '../components';
+import { BigSidebar, NavBar, SmallSidebar } from '../components';
+import Wrapper from '../assets/wrappers/Dashboard';
 
 const DashboardContext = createContext();
 
@@ -18,8 +19,18 @@ const Dashboard = () => {
     <DashboardContext.Provider
       value={{ user, isDarkTheme, setIsDarkTheme, toggleTheme }}
     >
-      <NavBar />
-      <Outlet />
+      <Wrapper>
+        <main className='dashboard'>
+          <SmallSidebar />
+          <BigSidebar />
+          <div>
+            <NavBar />
+            <div className='dashboard-page'>
+              <Outlet />
+            </div>
+          </div>
+        </main>
+      </Wrapper>
     </DashboardContext.Provider>
   );
 };
